@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="WEB-INF/templates/Layout.xhtml">
+        <ui:define name="title">Cadastro de Inventario</ui:define>
+
+        <ui:define name="content">
+            <h1 class="aw-page-title">Cadastro de Inventario</h1>
+
+            <h2 class="aw-page-subtitle">Produto</h2>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="ID" for="idProduto" />
+                    <p:outputLabel value="Nome" for="nomeProduto" />
+
+                    <p:inputText value="" id="idProduto"/>
+                    <p:inputText value="" id="nomeProduto"/>
+
+                    <p:commandButton value="Adicionar"/>
+                </h:panelGrid>
+
+                <h2 class="aw-page-subtitle">Produtos adicionados ao inventário</h2>
+                <p:dataTable rows="5" paginator="true" paginatorPosition="bottom" >
+                    <p:column headerText="ID" ></p:column>
+                    <p:column headerText="Nome" ></p:column>
+                    <p:column headerText="Quantidade" ></p:column>
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
