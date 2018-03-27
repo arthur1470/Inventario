@@ -1,3 +1,5 @@
+package br.com.inventario.util.jsf;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 

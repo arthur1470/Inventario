@@ -13,14 +13,12 @@
     <ui:define name="content">
         <h1 class="aw-page-title">Cadastro de Produto</h1>
         <h:form>
-            <h:panelGrid columns="2">
-                <p:outputLabel value="ID" for="id"/>
+        	<p:messages autoUpdate="true" closable="true" />
+            <h:panelGrid columns="1">
                 <p:outputLabel value="NOME" for="nome"/>
+                <p:inputText value="#{cadastroProdutoBean.produto.nome}" id="nome"/>
 
-                <p:inputText value="#{produtoBean.produto.id}" id="id"/>
-                <p:inputText value="#{produtoBean.produto.nome}" id="nome"/>
-
-                <p:commandButton value="Salvar" ajax="false" action="#{produtoBean.guardar}"/>
+                <p:commandButton value="Salvar" ajax="false" action="#{cadastroProdutoBean.salvar}"/>
             </h:panelGrid>
         </h:form>
     </ui:define>

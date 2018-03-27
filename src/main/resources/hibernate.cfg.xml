@@ -16,6 +16,8 @@
 		<property name="hibernate.current_session_context_class">thread</property>
 
 		<mapping class="br.com.inventario.model.Produto"/>
+		<mapping class="br.com.inventario.model.Inventario"/>
+		<mapping class="br.com.inventario.model.ProdutoInserido"/>
 
 	</session-factory>
 </hibernate-configuration>

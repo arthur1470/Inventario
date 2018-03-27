@@ -14,7 +14,8 @@ public class Inventario implements Serializable {
 
     @Id
     @Column(name = "ID_INVENTARIO")
-    @GeneratedValue
+    @SequenceGenerator(name = "SEQ_ID_INVENTARIO", sequenceName = "SEQ_ID_INVENTARIO")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_ID_INVENTARIO")
     private BigInteger id;
 
     @Column(name = "NOME_INVENTARIO")
@@ -23,6 +24,12 @@ public class Inventario implements Serializable {
     @Column(name = "DATA_INVENTARIO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataDoInventario;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "INVENTARIO_PRODUTO_INSERIDO", joinColumns =
+	@JoinColumn(name = "ID_INVENTARIO"), inverseJoinColumns =
+	@JoinColumn(name = "ID_PRODUTO_INSERIDO"))
+    private List<ProdutoInserido> produtosInseridos = new ArrayList<ProdutoInserido>();
 
     public BigInteger getId() {
         return id;
@@ -47,4 +54,37 @@ public class Inventario implements Serializable {
     public void setDataDoInventario(Date dataDoInventario) {
         this.dataDoInventario = dataDoInventario;
     }
+
+    public List<ProdutoInserido> getProdutosInseridos() {
+        return produtosInseridos;
+    }
+
+    public void setProdutosInseridos(List<ProdutoInserido> produtosInseridos) {
+        this.produtosInseridos = produtosInseridos;
+    }
+
+    @Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Inventario other = (Inventario) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
 }

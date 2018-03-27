@@ -8,9 +8,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
-@Named("produtoBean")
+@Named("cadastroProdutoBean")
 @ViewScoped
-public class ProdutoBean implements Serializable {
+public class CadastroProdutoBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Produto produto;
@@ -18,12 +18,12 @@ public class ProdutoBean implements Serializable {
     @Inject
     private ProdutoService service;
 
-    public ProdutoBean(){
+    public CadastroProdutoBean(){
         this.produto = new Produto();
     }
 
-    public void guardar(){
-        service.guardar(produto);
+    public void salvar(){
+        service.salvar(produto);
         produto = new Produto();
     }
 
